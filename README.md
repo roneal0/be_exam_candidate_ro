@@ -1,14 +1,35 @@
-# SCOIR Technical Interview for Back-End Engineers
+# be_exam_candidate_ro
 This repo contains an exercise intended for Back-End Engineers.
 
-## Instructions
-1. Fork this repo.
-1. Using technology of your choice, complete [the assignment](./Assignment.md).
-1. Update this README with
-    * a `How-To` section containing any instructions needed to execute your program.
-    * an `Assumptions` section containing documentation on any assumptions made while interpreting the requirements.
-1. Before the deadline, submit a pull request with your solution.
+## How-To
+This simple daemon will listen for file changes on an input directory, and write any input CSV-files containing Contact
+details to the specified output directory.  Errors will be written to the specified error directory.
 
-## Expectations
-1. Please take no more than 8 hours to work on this exercise. Complete as much as possible and then submit your solution.
-1. This exercise is meant to showcase how you work. With consideration to the time limit, do your best to treat it like a production system.
+All command-line arguments are required.
+
+Current usage output is below for reference:
+
+```
+$ ./be_exam_candidate_ro --help
+
+Usage of ./be_exam_candidate_ro:
+  -e string
+    	
+  -error-dir string
+    	Full directory path where output error files will be written.
+  -i string
+    	
+  -input-dir string
+    	Full directory path to watch for new input CSV files.
+  -o string
+    	
+  -output-dir string
+    	Full directory path where output JSON translations will be written.
+```
+
+## Assumptions
+The following assumptions regarding, or derivations from, requirements were made:
+
+* Files will not be considered processed, by name, unless the entire file is tranlated to JSON without error.
+* Error output is not written in CSV format, but includes all other informational requirements.
+* The "processed file" cache is managed with an internal map that is allowed to grow endlessly (there were no age-out requirements noted).
